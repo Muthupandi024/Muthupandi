@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Suhail - Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0.7rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        nav ul li.active a {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            min-height: 70vh;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+            text-align: center;
+            color: #6a11cb;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border-radius: 2px;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #6a11cb;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .gallery-date {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+       footer {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+        
+        .social-footer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .animated-text {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: #6a11cb;
+            font-weight: 600;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .highlights {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .highlight-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>C Muthupandi</h1>
+        <p>B.Tech Information Technology | Reg No: 953723205024</p>
+        <nav>
+            <ul>
+                <li><a href="academic.html">Academic Info</a></li>
+                <li><a href="skills.html">Skills & Projects</a></li>
+                <li class="active"><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   <div class="container">
+    <h2 class="section-title">Gallery</h2>
+    <div class="gallery-container">
+
+        <div class="gallery-item">
+            <img src="certificate1.jpeg" alt="Web Development Fundamentals">
+            <div class="gallery-caption">
+                Web Development Fundamentals - IBM
+                <span class="gallery-date">July 2025</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate2.jpeg" alt="Python GUVI">
+            <div class="gallery-caption">
+                Python Programming - GUVI
+                <span class="gallery-date">July 2025</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate3.jpeg" alt="ChatGPT for Everyone">
+            <div class="gallery-caption">
+                ChatGPT for Everyone - GUVI
+                <span class="gallery-date">July 2025</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate4.jpeg" alt="ICAT Test">
+            <div class="gallery-caption">
+                Internship Aptitude Test - ICAT
+                <span class="gallery-date">June 2025</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate5.jpeg" alt="Data Analysis with Python">
+            <div class="gallery-caption">
+                Data Analysis with Python - IBM
+                <span class="gallery-date">January 2025</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate6.jpeg" alt="Cloud Introduction">
+            <div class="gallery-caption">
+                Introduction to Cloud - IBM
+                <span class="gallery-date">January 2025</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate7.jpeg" alt="Linux Fundamentals">
+            <div class="gallery-caption">
+                Linux Fundamentals (RH104) - Red Hat
+                <span class="gallery-date">December 2024</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate8.jpg" alt="Recommendation Systems">
+            <div class="gallery-caption">
+                Building Recommendation Systems - Great Learning
+                <span class="gallery-date">September 2024</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate9.jpg" alt="AI Fundamentals">
+            <div class="gallery-caption">
+                AI Fundamentals - Great Learning
+                <span class="gallery-date">September 2024</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="certificate10.jpeg" alt="Introduction to Java">
+            <div class="gallery-caption">
+                Introduction to Java - SoloLearn
+                <span class="gallery-date">December 2024</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+        <div class="social-footer">
+            <a href="https://www.linkedin.com/in/muthu-pandi-c-152216310?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BWmYP5ziBRYe9%2FUc2dPDwYA%3D%3D" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Muthupandi024/Muthupandi" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/MUTHUPA02623470?s=09" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/muthu_pandi_0024?igsh=Z2oxaGtsNHNxeHVq" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 C Muthupandi. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
