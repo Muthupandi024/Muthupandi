@@ -1,0 +1,24 @@
+#slice operator
+def rev(s):
+    str1=s[::-1]
+    return "Reverse a string using slice operator:",str1
+#reversed method
+def rev1(s):
+    str2=reversed(s)
+    str3=''.join(str2)
+    return "Reverse a string by using reversed method :", str3
+#Reversed a string while loop
+def rev2(s):
+    rev4 = ''
+    i = len(s) - 1
+    while i >= 0:
+        rev4 =rev4 + s[i]
+        i -= 1
+    return "Reverse a string using while loop:", rev4
+
+
+s=str(input(" Enter a string:"))
+
+print(rev(s))
+print(rev1(s))
+print(rev2(s))
